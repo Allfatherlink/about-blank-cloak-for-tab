@@ -1,59 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloadable File Example</title>
 </head>
 <body>
-<!-- SUBSCRIBE TO IRWINTECH ON YOUTUBE HTTPS://YOUTUBE.COM/C/IRWINTECH -->
+    <h1>Download a File</h1>
+    <p>Click the link below to download a file that will open a website in an about:blank tab:</p>
+    <a href="download.txt" download>Download File</a>
 
-<button class="button-16" onclick="myFunction(github.com/Tacogamerman/Slate-Unblocker)">Press This For Redirect</button>
+    <script>
+        // Create a text file with JavaScript
+        const fileContent = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirect</title>
+    <script>
+        window.onload = function() {
+            var newTab = window.open('about:blank', '_blank'); // Open a new about:blank tab
+            newTab.location.href = 'github.com/Tacogamerman/Slate-Unblocker'; // Change this URL to your desired website
+        };
+    </script>
+</head>
+<body>
+    <p>If you see this, the website is opening in a new tab.</p>
+</body>
+</html>`;
 
-<script>
-function myFunction() {
-var win = window.open()
-//YOU CAN REPLACE THE LINK BELOW WITH ANYTHING YOU WANT! 
-var url = "github.com/Tacogamerman/Slate-Unblocker"
-if (url) github.com/Tacogamerman/Slate-Unblocker
-var iframe = document.createElement("iframe")
-iframe.style.border = "none";
-iframe.style.width = "100%";
-iframe.style.height = "100%"
-iframe.style.margin = "0";
-iframe.src = url;
-win.document.body.appendChild(iframe);
-}
-}
-</script>
-<style>
+        // Create a blob from the content
+        const blob = new Blob([fileContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
 
-
-.button-16 {
-  background-color: #f8f9fa;
-  border: 1px solid #f8f9fa;
-  border-radius: 4px;
-  color: #3c4043;
-  cursor: pointer;
-  font-family: arial,sans-serif;
-  font-size: 14px;
-  height: 36px;
-  line-height: 27px;
-  min-width: 54px;
-  padding: 0 16px;
-  text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: pre;
-}
-
-.button-16:hover {
-  border-color: #dadce0;
-  box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
-  color: #202124;
-}
-
-.button-16:focus {
-  border-color: #4285f4;
-  outline: none;
-} 
-</style>
+        // Create a link to download the file
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = 'redirect.html'; // The name of the file to be downloaded
+        downloadLink.textContent = 'Download File';
+        document.body.appendChild(downloadLink);
+    </script>
 </body>
 </html>
